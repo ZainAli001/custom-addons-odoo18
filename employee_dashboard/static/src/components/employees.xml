@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+<t t-name="employee_dashboard.EmployeeList">
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between mb-3">
+
+        <h2>HeadCount</h2>
+
+        <button class="btn btn-primary"
+                t-on-click="goDashboard">
+            Dashboard
+        </button>
+
+    </div>
+
+    <table class="table table-bordered table-hover">
+
+        <thead>
+
+            <tr>
+                <th>Name</th>
+                <th>Work Email</th>
+                <th>Department</th>
+                <th>Job Position</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <t t-foreach="state.employees"
+               t-as="emp"
+               t-key="emp.id">
+
+                <tr>
+
+                    <td>
+                        <t t-esc="emp.name"/>
+                    </td>
+
+                    <td>
+                        <t t-esc="emp.work_email"/>
+                    </td>
+
+                    <td>
+                        <t t-esc="emp.department_id ? emp.department_id[1] : ''"/>
+                    </td>
+
+                    <td>
+                        <t t-esc="emp.job_id ? emp.job_id[1] : ''"/>
+                    </td>
+
+                </tr>
+
+            </t>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</t>
+
+</templates>

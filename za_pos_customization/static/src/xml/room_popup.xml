@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="za_pos_customization.RoomPopup">
+
+        <Dialog title="'Select Room'">
+
+            <div class="list-group">
+
+                <t t-foreach="state.rooms" t-as="room" t-key="room.id">
+<Dialog title="'Select Room'">
+
+    <table class="table table-hover table-bordered">
+
+        <thead>
+
+            <tr>
+                <th>Room Number</th>
+                <th>Guest</th>
+                <th>Status</th>
+                <th width="120">Action</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <t t-foreach="state.rooms" t-as="room" t-key="room.id">
+
+                <tr>
+
+                    <td>
+                        <t t-esc="room.room_id[1]"/>
+                    </td>
+
+                    <td>
+                        <t t-esc="room.guest_id[1]"/>
+                    </td>
+
+                    <td>
+                        <t t-esc="room.status"/>
+                    </td>
+
+                    <td class="text-center">
+
+                        <button
+                                class="btn btn-primary btn-sm"
+                                t-on-click="selectRoom.bind(this, room)">
+
+                            Select
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </t>
+
+        </tbody>
+
+    </table>
+
+</Dialog>
+                    <!--                    <button-->
+                    <!--                        class="list-group-item list-group-item-action"-->
+                    <!--                        t-on-click="() => selectRoom(room)">-->
+
+                    <!--                        <t t-esc="room.room_id[1]"/>-->
+                    <!--                        <t t-esc="room.guest_id[1]"/>-->
+
+                    <!--                    </button>-->
+
+                </t>
+
+            </div>
+
+        </Dialog>
+
+    </t>
+
+</templates>

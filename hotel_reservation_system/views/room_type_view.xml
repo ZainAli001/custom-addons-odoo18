@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ================= LIST VIEW ================= -->
+
+    <record id="hotel_room_type_list_view" model="ir.ui.view">
+        <field name="name">hotel.room.type.list</field>
+        <field name="model">hotel.room.type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="capacity"/>
+                <field name="bed_type"/>
+                <field name="base_price"/>
+                <field name="weekend_price"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ================= FORM VIEW ================= -->
+
+    <record id="hotel_room_type_form_view" model="ir.ui.view">
+        <field name="name">hotel.room.type.form</field>
+        <field name="model">hotel.room.type</field>
+        <field name="arch" type="xml">
+
+            <form string="Room Type">
+
+                <sheet>
+
+                    <field name="image"
+                           widget="image"
+                           class="oe_avatar"
+                           options="{'preview_image':'image'}"/>
+
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+
+                    <group>
+
+                        <group>
+                            <field name="code"/>
+                            <field name="active"/>
+                            <field name="base_price"/>
+                            <field name="weekend_price"/>
+                            <field name="extra_bed_price"/>
+                        </group>
+
+                        <group>
+                            <field name="capacity"/>
+                            <field name="adult_capacity"/>
+                            <field name="child_capacity"/>
+                            <field name="bed_type"/>
+                            <field name="no_of_beds"/>
+                            <field name="room_size"/>
+                        </group>
+
+                    </group>
+
+                    <notebook>
+
+                        <page string="Meal Plan">
+
+                            <group>
+
+                                <field name="breakfast_included"/>
+                                <field name="lunch_included"/>
+                                <field name="dinner_included"/>
+
+                            </group>
+
+                        </page>
+
+                        <page string="Policies">
+
+                            <group>
+
+                                <field name="refundable"/>
+                                <field name="check_in_time"/>
+
+                            </group>
+
+                        </page>
+
+                        <page string="Description">
+
+                            <field name="description"
+                                   nolabel="1"
+                                   placeholder="Describe this room type..."/>
+
+                        </page>
+
+                    </notebook>
+
+                    <chatter/>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+    <!-- ================= ACTION ================= -->
+
+    <record id="hotel_room_type_action" model="ir.actions.act_window">
+        <field name="name">Room Types</field>
+        <field name="res_model">hotel.room.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+
+
+</odoo>

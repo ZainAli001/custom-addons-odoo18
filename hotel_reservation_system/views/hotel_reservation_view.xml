@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ===================================================== -->
+    <!-- TREE VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="hotel_reservation_list_view" model="ir.ui.view">
+        <field name="name">hotel.reservation.list</field>
+        <field name="model">hotel.reservation</field>
+        <field name="arch" type="xml">
+            <list string="Reservations">
+
+                <field name="reservation_no"/>
+                <field name="guest_id"/>
+                <field name="branch_id"/>
+                <field name="room_id"/>
+                <field name="check_in_date"/>
+                <field name="check_out_date"/>
+                <field name="no_of_nights"/>
+                <field name="total_amount"/>
+                <field name="payment_status"/>
+                <field name="status"/>
+
+            </list>
+        </field>
+    </record>
+
+    <!-- ===================================================== -->
+    <!-- FORM VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="hotel_reservation_form_view" model="ir.ui.view">
+        <field name="name">hotel.reservation.form</field>
+        <field name="model">hotel.reservation</field>
+        <field name="arch" type="xml">
+
+            <form string="Reservation">
+
+                <header>
+
+                    <button name="action_confirm"
+                            type="object"
+                            string="Confirm"
+                            class="btn-primary"
+                            invisible="status != 'draft'"/>
+
+                    <button name="action_check_in"
+                            type="object"
+                            string="Check In"
+                            class="btn-success"
+                            invisible="status != 'confirmed'"/>
+                    <button name="action_create_invoice"
+                            type="object"
+                            string="Create Invoice"
+                            class="btn-success"
+                            invisible="status != 'confirmed'"/>
+
+                    <button name="action_check_out"
+                            type="object"
+                            string="Check Out"
+                            class="btn-warning"
+                            invisible="status != 'checked_in'"/>
+
+                    <button name="action_cancel"
+                            type="object"
+                            string="Cancel"
+                            class="btn-danger"
+                            invisible="status in ('checked_out','cancelled')"/>
+
+                    <field name="status"
+                           widget="statusbar"
+                           statusbar_visible="draft,confirmed,checked_in,checked_out"/>
+
+                </header>
+
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+
+                        <button name="action_view_invoice"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-file-text-o"
+                                invisible="not invoice_id">
+
+                            <field name="invoice_count"
+                                   widget="statinfo"
+                                   string="Invoice"/>
+
+                        </button>
+
+                    </div>
+                    <div class="oe_title">
+
+                        <label for="reservation_no"/>
+
+                        <h1>
+                            <field name="reservation_no" readonly="1"/>
+                        </h1>
+
+                    </div>
+
+                    <group>
+
+                        <group>
+
+                            <field name="branch_id"/>
+
+                            <field name="guest_id"/>
+
+                            <field name="multiple_rooms"/>
+
+                            <field name="room_id"/>
+
+                            <field name="room_type_id" readonly="1"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="check_in_date"/>
+
+                            <field name="check_out_date"/>
+
+                            <field name="no_of_nights" readonly="1"/>
+
+                        </group>
+
+                    </group>
+
+                    <notebook>
+
+                        <page string="Guests">
+
+                            <group>
+
+                                <field name="adults"/>
+
+                                <field name="children"/>
+
+                            </group>
+
+                        </page>
+
+                        <page string="Payment">
+
+                            <group>
+
+                                <field name="room_price" readonly="1"/>
+
+                                <field name="total_amount" readonly="1"/>
+
+                                <field name="payment_status"/>
+
+                            </group>
+
+                        </page>
+                        <page string="POS Orders">
+                            <field name="pos_order_ids">
+                                <list>
+                                    <field name="pos_reference"/>
+                                    <field name="date_order"/>
+                                    <field name="amount_total"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Extra Services">
+                            <field name="extra_charges_line_ids">
+                                <list editable="bottom">
+                                    <field name="product_id" string="Service"/>
+                                    <field name="quantity"/>
+                                    <field name="price_unit"/>
+                                    <field name="price_subtotal" sum="Total"/>
+                                </list>
+                            </field>
+                            <field name="amount_total"/>
+                        </page>
+                        <page string="Multiple Room" invisible="not multiple_rooms">
+                            <field name="room_line_ids" invisible="not multiple_rooms">
+                                <list editable="bottom">
+                                    <field name="room_id"/>
+                                    <field name="room_type_id"/>
+                                    <field name="price_unit"/>
+<!--                                    <field name="nights"/>-->
+<!--                                    <field name="price_subtotal" sum="Total"/>-->
+                                </list>
+                                <form>
+                                    <field name="room_id"/>
+                                    <field name="price_unit"/>
+                                    <field name="extra_service_line_ids">
+                                        <list editable="bottom">
+                                            <field name="product_id"/>
+                                            <field name="quantity"/>
+                                            <field name="price_unit"/>
+                                            <field name="price_subtotal" sum="Total"/>
+                                        </list>
+                                    </field>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Notes">
+
+                            <field name="notes"
+                                   nolabel="1"
+                                   placeholder="Internal Notes..."/>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+                <chatter/>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!-- ===================================================== -->
+    <!-- SEARCH VIEW -->
+    <!-- ===================================================== -->
+
+
+    <!-- ===================================================== -->
+    <!-- ACTION -->
+    <!-- ===================================================== -->
+
+    <record id="hotel_reservation_action" model="ir.actions.act_window">
+        <field name="name">Reservations</field>
+        <field name="res_model">hotel.reservation</field>
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+
+</odoo>

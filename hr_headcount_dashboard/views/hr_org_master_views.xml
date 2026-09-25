@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Zone -->
+    <record id="view_hr_zone_tree" model="ir.ui.view">
+        <field name="name">hr.zone.tree</field>
+        <field name="model">hr.zone</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="region_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_hr_zone" model="ir.actions.act_window">
+        <field name="name">Zones</field>
+        <field name="res_model">hr.zone</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Branch -->
+    <record id="view_hr_branch_tree" model="ir.ui.view">
+        <field name="name">hr.branch.tree</field>
+        <field name="model">hr.branch</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="city"/>
+                <field name="zone_id"/>
+                <field name="region_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hr_branch_form" model="ir.ui.view">
+        <field name="name">hr.branch.form</field>
+        <field name="model">hr.branch</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="city"/>
+                        <field name="zone_id"/>
+                        <field name="region_id"/>
+                        <field name="address"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hr_branch" model="ir.actions.act_window">
+        <field name="name">Branches</field>
+        <field name="res_model">hr.branch</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Division -->
+    <record id="view_hr_division_tree" model="ir.ui.view">
+        <field name="name">hr.division.tree</field>
+        <field name="model">hr.division</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_hr_division" model="ir.actions.act_window">
+        <field name="name">Divisions</field>
+        <field name="res_model">hr.division</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Sub-Department -->
+    <record id="view_hr_sub_department_tree" model="ir.ui.view">
+        <field name="name">hr.sub.department.tree</field>
+        <field name="model">hr.sub.department</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="department_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_hr_sub_department" model="ir.actions.act_window">
+        <field name="name">Sub-Departments</field>
+        <field name="res_model">hr.sub.department</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Management Level -->
+    <record id="view_hr_management_level_tree" model="ir.ui.view">
+        <field name="name">hr.management.level.tree</field>
+        <field name="model">hr.management.level</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_hr_management_level" model="ir.actions.act_window">
+        <field name="name">Management Levels</field>
+        <field name="res_model">hr.management.level</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- HR Grade -->
+    <record id="view_hr_grade_tree" model="ir.ui.view">
+        <field name="name">hr.grade.tree</field>
+        <field name="model">hr.grade</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_hr_grade" model="ir.actions.act_window">
+        <field name="name">HR Grades</field>
+        <field name="res_model">hr.grade</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem
+            id="hotel_management_menu_action"
+            name="Hotel Management"
+            sequence="10"/>
+
+    <menuitem
+            id="hotel_room_menu_action"
+            name="Configuration"
+            parent="hotel_reservation_system.hotel_management_menu_action"
+            sequence="10"/>
+    <menuitem
+            id="hotel_room_types"
+            name="Room Types"
+            parent="hotel_reservation_system.hotel_room_menu_action"
+            action="hotel_room_type_action"
+            sequence="11"/>
+
+    <menuitem
+            id="hotel_room_amenity"
+            name="Room Amenity"
+            parent="hotel_reservation_system.hotel_room_menu_action"
+            action="hotel_room_amenity_action"
+            sequence="12"/>
+
+    <menuitem
+            id="hotel_floor"
+            name="Room Floor"
+            parent="hotel_reservation_system.hotel_room_menu_action"
+            action="hotel_floor_action"
+            sequence="13"/>
+
+    <menuitem
+            id="hotel_room_menu"
+            name="Rooms"
+            parent="hotel_reservation_system.hotel_room_menu_action"
+            action="hotel_room_action"
+            sequence="14"/>
+    <menuitem id="hotel_reservation_menu"
+              name="Reservations"
+              parent="hotel_reservation_system.hotel_management_menu_action"
+              action="hotel_reservation_action"
+              sequence="1"/>
+</odoo>

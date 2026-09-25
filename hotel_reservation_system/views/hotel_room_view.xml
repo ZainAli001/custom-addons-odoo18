@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ================= LIST VIEW ================= -->
+
+    <record id="hotel_room_list_view" model="ir.ui.view">
+        <field name="name">hotel.room.list</field>
+        <field name="model">hotel.room</field>
+        <field name="arch" type="xml">
+            <list string="Hotel Rooms">
+
+                <field name="name"/>
+                <field name="branch_id"/>
+                <field name="room_type_id"/>
+                <field name="floor_id"/>
+                <field name="status"/>
+                <field name="housekeeping_status"/>
+                <field name="price_override"/>
+                <field name="active"/>
+
+            </list>
+        </field>
+    </record>
+
+
+    <!-- ================= FORM VIEW ================= -->
+
+    <record id="hotel_room_form_view" model="ir.ui.view">
+        <field name="name">hotel.room.form</field>
+        <field name="model">hotel.room</field>
+        <field name="arch" type="xml">
+
+            <form string="Hotel Room">
+
+                <sheet>
+
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+
+                    <group>
+
+                        <group>
+
+                            <field name="branch_id"/>
+                            <field name="room_type_id"/>
+                            <field name="floor_id"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="status"/>
+                            <field name="housekeeping_status"/>
+                            <field name="active"/>
+
+                        </group>
+
+                    </group>
+
+                    <notebook>
+
+                        <page string="Pricing">
+
+                            <group>
+                                <field name="price_override"/>
+                            </group>
+
+                        </page>
+
+                        <page string="Description">
+
+                            <field name="description"
+                                   nolabel="1"
+                                   placeholder="Enter room notes or description..."/>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+
+    <!-- ================= SEARCH VIEW ================= -->
+
+    <!-- ================= ACTION ================= -->
+
+    <record id="hotel_room_action" model="ir.actions.act_window">
+        <field name="name">Rooms</field>
+        <field name="res_model">hotel.room</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+
+
+</odoo>

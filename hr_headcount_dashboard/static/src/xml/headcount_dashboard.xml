@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+<t t-name="hr_headcount_dashboard.Dashboard" owl="1">
+    <div class="o_headcount_dashboard p-3">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h2 class="mb-0">Headcount Management</h2>
+                <div class="text-muted">Overview of your workforce, positions and movements</div>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <input type="date" class="form-control form-control-sm"
+                       t-att-value="state.filters.date_from"
+                       t-on-change="(ev) => this.onDateChange('date_from', ev)"/>
+                <span>-</span>
+                <input type="date" class="form-control form-control-sm"
+                       t-att-value="state.filters.date_to"
+                       t-on-change="(ev) => this.onDateChange('date_to', ev)"/>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="o_hd_filters card p-2 mb-3">
+            <div class="row g-2">
+                <div class="col">
+                    <label class="form-label small mb-0">Region</label>
+                    <select class="form-select form-select-sm" t-on-change="(ev) => this.onFilterChange('region_id', ev)">
+                        <option value="">All</option>
+                        <t t-foreach="state.options.regions" t-as="o" t-key="o.id">
+                            <option t-att-value="o.id" t-esc="o.name"/>
+                        </t>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label small mb-0">Zone</label>
+                    <select class="form-select form-select-sm" t-on-change="(ev) => this.onFilterChange('zone_id', ev)">
+                        <option value="">All</option>
+                        <t t-foreach="state.options.zones" t-as="o" t-key="o.id">
+                            <option t-att-value="o.id" t-esc="o.name"/>
+                        </t>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label small mb-0">City</label>
+                    <input type="text" class="form-control form-control-sm" placeholder="All"
+                           t-on-change="(ev) => this.onFilterChange('city', ev)"/>
+                </div>
+                <div class="col">
+                    <label class="form-label small mb-0">Branch</label>
+                    <select class="form-select form-select-sm" t-on-change="(ev) => this.onFilterChange('branch_id', ev)">
+                        <option value="">All</option>
+                        <t t-foreach="state.options.branches" t-as="o" t-key="o.id">
+                            <option t-att-value="o.id" t-esc="o.name"/>
+                        </t>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label small mb-0">Division</label>
+                    <select class="form-select form-select-sm" t-on-change="(ev) => this.onFilterChange('division_id', ev)">
+                        <option value="">All</option>
+                        <t t-foreach="state.options.divisions" t-as="o" t-key="o.id">
+                            <option t-att-value="o.id" t-esc="o.name"/>
+                        </t>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label small mb-0">Department</label>
+                    <select class="form-select form-select-sm" t-on-change="(ev) => this.onFilterChange('department_id', ev)">
+                        <option value="">All</option>
+                        <t t-foreach="state.options.departments" t-as="o" t-key="o.id">
+                            <option t-att-value="o.id" t-esc="o.name"/>
+                        </t>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label small mb-0">Sub-Department</label>
+                    <select class="form-select form-select-sm" t-on-change="(ev) => this.onFilterChange('sub_department_id', ev)">
+                        <option value="">All</option>
+                        <t t-foreach="state.options.sub_departments" t-as="o" t-key="o.id">
+                            <option t-att-value="o.id" t-esc="o.name"/>
+                        </t>
+                    </select>
+                </div>
+            </div>
+            <div class="row g-2 mt-1">
+                <div class="col">
+                    <label class="form-label small mb-0">Designation</label>
+                    <select class="form-select form-select-sm" t-on-change="(ev) => this.onFilterChange('job_id', ev)">
+                        <option value="">All</option>
+                        <t t-foreach="state.options.jobs" t-as="o" t-key="o.id">
+                            <option t-att-value="o.id" t-esc="o.name"/>
+                        </t>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label small mb-0">Management Level</label>
+                    <select class="form-select form-select-sm" t-on-change="(ev) => this.onFilterChange('management_level_id', ev)">
+                        <option value="">All</option>
+                        <t t-foreach="state.options.management_levels" t-as="o" t-key="o.id">
+                            <option t-att-value="o.id" t-esc="o.name"/>
+                        </t>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label small mb-0">HR Grade</label>
+                    <select class="form-select form-select-sm" t-on-change="(ev) => this.onFilterChange('hr_grade_id', ev)">
+                        <option value="">All</option>
+                        <t t-foreach="state.options.hr_grades" t-as="o" t-key="o.id">
+                            <option t-att-value="o.id" t-esc="o.name"/>
+                        </t>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label small mb-0">Employment Type</label>
+                    <select class="form-select form-select-sm" t-on-change="(ev) => this.onFilterChange('employment_type', ev)">
+                        <option value="">All</option>
+                        <option value="full_time">Full-Time</option>
+                        <option value="part_time">Part-Time</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label small mb-0">Status</label>
+                    <select class="form-select form-select-sm" t-on-change="(ev) => this.onFilterChange('employee_status', ev)">
+                        <option value="">All</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                        <option value="on_leave">On Leave</option>
+                        <option value="probation">Probation</option>
+                        <option value="retired">Retired</option>
+                        <option value="terminated">Terminated</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label small mb-0">Gender</label>
+                    <select class="form-select form-select-sm" t-on-change="(ev) => this.onFilterChange('gender', ev)">
+                        <option value="">All</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="col-auto d-flex align-items-end">
+                    <button class="btn btn-sm btn-outline-secondary" t-on-click="resetFilters">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="o_hd_kpis row g-2 mb-3">
+            <div class="col kpi-card">
+                <div class="card p-2">
+                    <div class="small text-muted">Total Employees</div>
+                    <div class="h4 mb-0" t-esc="state.kpis.total_employees and state.kpis.total_employees.value"/>
+                    <div class="small" t-esc="(state.kpis.total_employees and state.kpis.total_employees.delta) + '% vs last period'"/>
+                </div>
+            </div>
+            <div class="col kpi-card">
+                <div class="card p-2">
+                    <div class="small text-muted">Active Employees</div>
+                    <div class="h4 mb-0" t-esc="state.kpis.active_employees and state.kpis.active_employees.value"/>
+                    <div class="small" t-esc="(state.kpis.active_employees and state.kpis.active_employees.delta) + '% vs last period'"/>
+                </div>
+            </div>
+            <div class="col kpi-card">
+                <div class="card p-2">
+                    <div class="small text-muted">Inactive Employees</div>
+                    <div class="h4 mb-0" t-esc="state.kpis.inactive_employees and state.kpis.inactive_employees.value"/>
+                    <div class="small" t-esc="(state.kpis.inactive_employees and state.kpis.inactive_employees.delta) + '% vs last period'"/>
+                </div>
+            </div>
+            <div class="col kpi-card">
+                <div class="card p-2">
+                    <div class="small text-muted">New Joiners</div>
+                    <div class="h4 mb-0" t-esc="state.kpis.new_joiners and state.kpis.new_joiners.value"/>
+                    <div class="small" t-esc="(state.kpis.new_joiners and state.kpis.new_joiners.delta) + '% vs last period'"/>
+                </div>
+            </div>
+            <div class="col kpi-card">
+                <div class="card p-2">
+                    <div class="small text-muted">Ex-Employees</div>
+                    <div class="h4 mb-0" t-esc="state.kpis.ex_employees and state.kpis.ex_employees.value"/>
+                    <div class="small" t-esc="(state.kpis.ex_employees and state.kpis.ex_employees.delta) + '% vs last period'"/>
+                </div>
+            </div>
+            <div class="col kpi-card">
+                <div class="card p-2">
+                    <div class="small text-muted">Open Positions</div>
+                    <div class="h4 mb-0" t-esc="state.kpis.open_positions and state.kpis.open_positions.value"/>
+                    <div class="small" t-esc="(state.kpis.open_positions and state.kpis.open_positions.delta) + '% vs last period'"/>
+                </div>
+            </div>
+            <div class="col kpi-card">
+                <div class="card p-2">
+                    <div class="small text-muted">Vacant Positions</div>
+                    <div class="h4 mb-0" t-esc="state.kpis.vacant_positions and state.kpis.vacant_positions.value"/>
+                    <div class="small" t-esc="(state.kpis.vacant_positions and state.kpis.vacant_positions.delta) + '% vs last period'"/>
+                </div>
+            </div>
+            <div class="col kpi-card">
+                <div class="card p-2">
+                    <div class="small text-muted">On Probation</div>
+                    <div class="h4 mb-0" t-esc="state.kpis.on_probation and state.kpis.on_probation.value"/>
+                    <div class="small" t-esc="(state.kpis.on_probation and state.kpis.on_probation.delta) + '% vs last period'"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts row 1 -->
+        <div class="row g-2 mb-2">
+            <div class="col-3"><div class="card p-2"><div class="fw-bold mb-1">Headcount by Region / Zone</div>
+                <div class="chart-box"><canvas t-ref="chart_region_zone"/></div></div></div>
+            <div class="col-3"><div class="card p-2"><div class="fw-bold mb-1">Headcount by Department</div>
+                <div class="chart-box"><canvas t-ref="chart_department"/></div></div></div>
+            <div class="col-3"><div class="card p-2"><div class="fw-bold mb-1">Employee Status</div>
+                <div class="chart-box"><canvas t-ref="chart_status"/></div></div></div>
+            <div class="col-3"><div class="card p-2"><div class="fw-bold mb-1">Gender Ratio</div>
+                <div class="chart-box"><canvas t-ref="chart_gender"/></div></div></div>
+        </div>
+
+        <!-- Charts row 2 -->
+        <div class="row g-2 mb-3">
+            <div class="col-3"><div class="card p-2"><div class="fw-bold mb-1">Full-Time vs Part-Time</div>
+                <div class="chart-box"><canvas t-ref="chart_ft_pt"/></div></div></div>
+            <div class="col-3"><div class="card p-2"><div class="fw-bold mb-1">Monthly Headcount Trend</div>
+                <div class="chart-box"><canvas t-ref="chart_trend"/></div></div></div>
+            <div class="col-3"><div class="card p-2"><div class="fw-bold mb-1">New Joiners vs Exits</div>
+                <div class="chart-box"><canvas t-ref="chart_joiners_exits"/></div></div></div>
+            <div class="col-3"><div class="card p-2"><div class="fw-bold mb-1">Position Status</div>
+                <div class="chart-box"><canvas t-ref="chart_position"/></div></div></div>
+        </div>
+
+        <!-- Employee List -->
+        <div class="card p-2">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="fw-bold">Employee List</div>
+                <button class="btn btn-sm btn-outline-primary" t-on-click="exportCsv">Export</button>
+            </div>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Employee Code</th><th>Name</th><th>Region</th><th>Zone</th>
+                        <th>Branch</th><th>Department</th><th>Designation</th>
+                        <th>Mgmt Level</th><th>Grade</th><th>Type</th><th>Status</th><th>Joining Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="state.employees" t-as="emp" t-key="emp.id">
+                        <tr>
+                            <td t-esc="emp.employee_code"/>
+                            <td t-esc="emp.name"/>
+                            <td t-esc="emp.region"/>
+                            <td t-esc="emp.zone"/>
+                            <td t-esc="emp.branch"/>
+                            <td t-esc="emp.department"/>
+                            <td t-esc="emp.designation"/>
+                            <td t-esc="emp.management_level"/>
+                            <td t-esc="emp.hr_grade"/>
+                            <td t-esc="emp.employment_type"/>
+                            <td t-esc="emp.status"/>
+                            <td t-esc="emp.joining_date"/>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="small text-muted" t-esc="'Showing page ' + state.page + ' of ' + Math.max(Math.ceil(state.employeeCount / state.pageSize), 1) + ' (' + state.employeeCount + ' records)'"/>
+                <div>
+                    <button class="btn btn-sm btn-outline-secondary" t-on-click="prevPage">Prev</button>
+                    <button class="btn btn-sm btn-outline-secondary" t-on-click="nextPage">Next</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</t>
+
+</templates>

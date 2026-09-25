@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="point_of_sale.ControlButtons"
+       t-inherit-mode="extension">
+
+        <xpath expr="//button[contains(@class,'more-btn')]" position="before">
+
+            <button class="btn btn-danger btn-lg flex-shrink-0"
+                    t-on-click="() => this.onClick()">
+
+                <i class="fa fa-eraser me-1"/>
+                Clear All
+            </button>
+
+        </xpath>
+
+    </t>
+
+</templates>

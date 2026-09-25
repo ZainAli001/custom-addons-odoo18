@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<templates xml:space="preserve">
+
+    <t t-name="employee_dashboard.ListView">
+
+        <div class="d-flex" style="height:100vh;">
+
+            <!-- ================================================= -->
+            <!-- MAIN CONTENT -->
+            <!-- ================================================= -->
+
+            <div class="flex-grow-1 p-4 bg-light"
+                 style="overflow-y:auto;">
+
+                <!-- ================= TOP BAR ================= -->
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                    <h2>
+                        HeadCount Dashboard
+                    </h2>
+
+<!--                    <div class="d-flex gap-2">-->
+
+<!--                        <input type="text"-->
+<!--                               class="form-control"-->
+<!--                               placeholder="Search..."-->
+<!--                               t-model="state.search"/>-->
+
+<!--                        <select class="form-select"-->
+<!--                                t-model="state.filter">-->
+
+<!--                            <option value="all">-->
+<!--                                All-->
+<!--                            </option>-->
+
+<!--                            <option value="today">-->
+<!--                                Today-->
+<!--                            </option>-->
+
+<!--                            <option value="week">-->
+<!--                                This Week-->
+<!--                            </option>-->
+
+<!--                        </select>-->
+
+<!--                    </div>-->
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- KPI CARDS -->
+                <!-- ================================================= -->
+
+                <div class="row g-4 mb-4">
+
+    <!-- Total Employees -->
+                    <div class="col">
+        <div class="card border-0 h-100"
+             style="
+                border-radius:18px;
+                background:linear-gradient(145deg,#fff4df,#f9d99a);
+                box-shadow:8px 8px 18px rgba(180,130,50,0.18),
+                           -5px -5px 12px rgba(255,255,255,0.9);
+                transition:all 0.25s ease;
+             ">
+
+            <div class="card-body text-center position-relative overflow-hidden p-4">
+
+                <div style="
+                    position:absolute;
+                    top:-35px;
+                    right:-35px;
+                    width:100px;
+                    height:100px;
+                    border-radius:50%;
+                    background:rgba(255,255,255,0.35);
+                "></div>
+
+                <div class="mb-2 mx-auto"
+                     style="
+                        width:45px;
+                        height:45px;
+                        border-radius:14px;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        background:rgba(255,255,255,0.65);
+                        box-shadow:inset 2px 2px 5px rgba(180,130,50,0.15),
+                                   3px 3px 8px rgba(180,130,50,0.12);
+                     ">
+                    <i class="fa fa-users"
+                       style="font-size:20px;color:#b7791f;"></i>
+                </div>
+
+                <h6 class="mb-2 fw-semibold"
+                    style="color:#8a5a12;">
+                    Total Employees
+                </h6>
+
+                <h2 class="fw-bold mb-0"
+                    style="color:#6b450d;">
+                    <t t-esc="state.totalEmployees"/>
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+
+                    <!-- Active Employees -->
+                    <div class="col">
+        <div class="card border-0 h-100"
+             style="
+                border-radius:18px;
+                background:linear-gradient(145deg,#e7f9ed,#b9e8c8);
+                box-shadow:8px 8px 18px rgba(40,167,69,0.18),
+                           -5px -5px 12px rgba(255,255,255,0.9);
+                transition:all 0.25s ease;
+             ">
+
+            <div class="card-body text-center position-relative overflow-hidden p-4">
+
+                <div style="
+                    position:absolute;
+                    top:-35px;
+                    right:-35px;
+                    width:100px;
+                    height:100px;
+                    border-radius:50%;
+                    background:rgba(255,255,255,0.4);
+                "></div>
+
+                <div class="mb-2 mx-auto"
+                     style="
+                        width:45px;
+                        height:45px;
+                        border-radius:14px;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        background:rgba(255,255,255,0.7);
+                        box-shadow:inset 2px 2px 5px rgba(40,167,69,0.15),
+                                   3px 3px 8px rgba(40,167,69,0.12);
+                     ">
+                    <i class="fa fa-user-check"
+                       style="font-size:20px;color:#198754;"></i>
+                </div>
+
+                <h6 class="mb-2 fw-semibold"
+                    style="color:#157347;">
+                    Active Employees
+                </h6>
+
+                <h2 class="fw-bold mb-0"
+                    style="color:#146c43;">
+                    <t t-esc="state.activeEmployees"/>
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+
+                    <!-- POS Products -->
+                    <div class="col">
+        <div class="card border-0 h-100"
+             style="
+                border-radius:18px;
+                background:linear-gradient(145deg,#e8f2ff,#bcd7ff);
+                box-shadow:8px 8px 18px rgba(59,130,246,0.18),
+                           -5px -5px 12px rgba(255,255,255,0.9);
+                transition:all 0.25s ease;
+             ">
+
+            <div class="card-body text-center position-relative overflow-hidden p-4">
+
+                <div style="
+                    position:absolute;
+                    top:-35px;
+                    right:-35px;
+                    width:100px;
+                    height:100px;
+                    border-radius:50%;
+                    background:rgba(255,255,255,0.4);
+                "></div>
+
+                <div class="mb-2 mx-auto"
+                     style="
+                        width:45px;
+                        height:45px;
+                        border-radius:14px;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        background:rgba(255,255,255,0.7);
+                        box-shadow:inset 2px 2px 5px rgba(59,130,246,0.15),
+                                   3px 3px 8px rgba(59,130,246,0.12);
+                     ">
+                    <i class="fa fa-shopping-cart"
+                       style="font-size:20px;color:#2563eb;"></i>
+                </div>
+
+                <h6 class="mb-2 fw-semibold"
+                    style="color:#2457a6;">
+                    New Employees
+                </h6>
+
+                <h2 class="fw-bold mb-0"
+                    style="color:#1d4ed8;">
+                    <t t-esc="state.posProductCount"/>
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+
+                    <!-- Inactive Employees -->
+                    <div class="col">
+        <div class="card border-0 h-100"
+             style="
+                border-radius:18px;
+                background:linear-gradient(145deg,#ffe8eb,#f7b8c0);
+                box-shadow:8px 8px 18px rgba(220,53,69,0.18),
+                           -5px -5px 12px rgba(255,255,255,0.9);
+                transition:all 0.25s ease;
+             ">
+
+            <div class="card-body text-center position-relative overflow-hidden p-4">
+
+                <div style="
+                    position:absolute;
+                    top:-35px;
+                    right:-35px;
+                    width:100px;
+                    height:100px;
+                    border-radius:50%;
+                    background:rgba(255,255,255,0.4);
+                "></div>
+
+                <div class="mb-2 mx-auto"
+                     style="
+                        width:45px;
+                        height:45px;
+                        border-radius:14px;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        background:rgba(255,255,255,0.7);
+                        box-shadow:inset 2px 2px 5px rgba(220,53,69,0.15),
+                                   3px 3px 8px rgba(220,53,69,0.12);
+                     ">
+                    <i class="fa fa-user-times"
+                       style="font-size:20px;color:#dc3545;"></i>
+                </div>
+
+                <h6 class="mb-2 fw-semibold"
+                    style="color:#b02a37;">
+                    Inactive Employees
+                </h6>
+
+                <h2 class="fw-bold mb-0"
+                    style="color:#a61e2a;">
+                    <t t-esc="state.inactiveEmployees"/>
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+
+                    <!-- New Joiners -->
+                    <div class="col">
+        <div class="card border-0 h-100"
+             style="
+                border-radius:18px;
+                background:linear-gradient(145deg,#f1eaff,#d5c2ff);
+                box-shadow:8px 8px 18px rgba(139,92,246,0.18),
+                           -5px -5px 12px rgba(255,255,255,0.9);
+                transition:all 0.25s ease;
+             ">
+
+            <div class="card-body text-center position-relative overflow-hidden p-4">
+
+                <div style="
+                    position:absolute;
+                    top:-35px;
+                    right:-35px;
+                    width:100px;
+                    height:100px;
+                    border-radius:50%;
+                    background:rgba(255,255,255,0.4);
+                "></div>
+
+                <div class="mb-2 mx-auto"
+                     style="
+                        width:45px;
+                        height:45px;
+                        border-radius:14px;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        background:rgba(255,255,255,0.7);
+                        box-shadow:inset 2px 2px 5px rgba(139,92,246,0.15),
+                                   3px 3px 8px rgba(139,92,246,0.12);
+                     ">
+                    <i class="fa fa-user-plus"
+                       style="font-size:20px;color:#7c3aed;"></i>
+                </div>
+
+                <h6 class="mb-2 fw-semibold"
+                    style="color:#6d28d9;">
+                    New Joiners
+                </h6>
+
+                <h2 class="fw-bold mb-0"
+                    style="color:#5b21b6;">
+                    <t t-esc="state.newJoiners"/>
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+
+                    <!-- Ex Employees -->
+                    <div class="col">
+        <div class="card border-0 h-100"
+             style="
+                border-radius:18px;
+                background:linear-gradient(145deg,#ffe9f3,#f7bfd8);
+                box-shadow:8px 8px 18px rgba(236,72,153,0.18),
+                           -5px -5px 12px rgba(255,255,255,0.9);
+                transition:all 0.25s ease;
+             ">
+
+            <div class="card-body text-center position-relative overflow-hidden p-4">
+
+                <div style="
+                    position:absolute;
+                    top:-35px;
+                    right:-35px;
+                    width:100px;
+                    height:100px;
+                    border-radius:50%;
+                    background:rgba(255,255,255,0.4);
+                "></div>
+
+                <div class="mb-2 mx-auto"
+                     style="
+                        width:45px;
+                        height:45px;
+                        border-radius:14px;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        background:rgba(255,255,255,0.7);
+                        box-shadow:inset 2px 2px 5px rgba(236,72,153,0.15),
+                                   3px 3px 8px rgba(236,72,153,0.12);
+                     ">
+                    <i class="fa fa-user-minus"
+                       style="font-size:20px;color:#db2777;"></i>
+                </div>
+
+                <h6 class="mb-2 fw-semibold"
+                    style="color:#be185d;">
+                    Ex-Employees
+                </h6>
+
+                <h2 class="fw-bold mb-0"
+                    style="color:#9d174d;">
+                    <t t-esc="state.exEmployees"/>
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+
+                    <!-- Open Positions -->
+                    <div class="col">
+        <div class="card border-0 h-100"
+             style="
+                border-radius:18px;
+                background:linear-gradient(145deg,#fffbdc,#f8e98b);
+                box-shadow:8px 8px 18px rgba(234,179,8,0.18),
+                           -5px -5px 12px rgba(255,255,255,0.9);
+                transition:all 0.25s ease;
+             ">
+
+            <div class="card-body text-center position-relative overflow-hidden p-4">
+
+                <div style="
+                    position:absolute;
+                    top:-35px;
+                    right:-35px;
+                    width:100px;
+                    height:100px;
+                    border-radius:50%;
+                    background:rgba(255,255,255,0.45);
+                "></div>
+
+                <div class="mb-2 mx-auto"
+                     style="
+                        width:45px;
+                        height:45px;
+                        border-radius:14px;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        background:rgba(255,255,255,0.7);
+                        box-shadow:inset 2px 2px 5px rgba(234,179,8,0.15),
+                                   3px 3px 8px rgba(234,179,8,0.12);
+                     ">
+                    <i class="fa fa-briefcase"
+                       style="font-size:20px;color:#ca8a04;"></i>
+                </div>
+
+                <h6 class="mb-2 fw-semibold"
+                    style="color:#a16207;">
+                    Open Positions
+                </h6>
+
+                <h2 class="fw-bold mb-0"
+                    style="color:#854d0e;">
+                    <t t-esc="state.openPositions"/>
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+                <!-- ================================================= -->
+                <!-- CHARTS ROW 1 -->
+                <!-- ================================================= -->
+
+                <div class="row g-4 mb-4">
+
+                    <!-- ================= DEPARTMENT ================= -->
+
+                    <div class="col-lg-6">
+
+                        <div class="card shadow-sm border-0">
+
+<!--                            <div class="card-header bg-white">-->
+
+<!--                                <h5 class="mb-0">-->
+<!--                                    Headcount by Department-->
+<!--                                </h5>-->
+
+<!--                            </div>-->
+
+                            <div class="card-body"
+                                 style="height:350px; position:relative;">
+
+                                <canvas t-ref="department_chart"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= ZONE ================= -->
+
+                    <div class="col-lg-6">
+
+                        <div class="card shadow-sm border-0">
+
+                            <div class="card-header bg-white">
+
+                                <h5 class="mb-0">
+                                    Headcount by Zone
+                                </h5>
+
+                            </div>
+
+                            <div class="card-body"
+                                 style="height:350px; position:relative;">
+
+                                <canvas t-ref="zone_chart"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- CHARTS ROW 2 -->
+                <!-- ================================================= -->
+
+                <div class="row g-4 mb-4">
+
+                    <!-- ================= STATUS ================= -->
+
+                    <div class="col-lg-6">
+
+                        <div class="card shadow-sm border-0">
+
+                            <div class="card-header bg-white">
+
+                                <h5 class="mb-0">
+                                    Employee Status
+                                </h5>
+
+                            </div>
+
+                            <div class="card-body"
+                                 style="height:350px; position:relative;">
+
+                                <canvas t-ref="status_chart"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= FUTURE CHART ================= -->
+
+                    <div class="col-lg-6">
+
+                        <div class="card shadow-sm border-0">
+
+                            <div class="card-header bg-white">
+
+                                <h5 class="mb-0">
+                                    Gender Ratio
+                                </h5>
+
+                            </div>
+
+                           <div class="card-body"
+                                 style="height:350px; position:relative;">
+
+                                <canvas t-ref="gender_chart"/>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

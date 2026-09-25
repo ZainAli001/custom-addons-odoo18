@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ah_pos_kot_chit.ControlButtons"
+       t-inherit="point_of_sale.ControlButtons"
+       t-inherit-mode="extension">
+
+        <xpath expr="//button[contains(@class,'more-btn')]" position="before">
+
+            <button class="btn btn-danger btn-lg flex-shrink-0"
+                    t-on-click="onClickKot">
+
+                <i class="fa fa-paperclip"/>
+                <span>KOT Chit</span>
+
+            </button>
+
+        </xpath>
+
+    </t>
+
+    <t t-name="KotReceiptTemplate">
+        <div class="pos-receipt">
+        <center>
+            <img class="pos-receipt-logo" t-att-src="receipt.company_image" alt="Logo"/>
+        </center>
+            <h2 style="text-align:center;">
+            <t t-esc="receipt.company_name"/>
+        </h2>
+            <h2 style="text-align:center;">KOT Chit</h2>
+            <p>
+                <strong>Order No:</strong>
+                <t t-esc="receipt.order_name"/>
+                <br/>
+                <strong>Date:</strong>
+                <t t-esc="receipt.date"/>
+                <br/>
+                <strong>Time:</strong>
+                <t t-esc="receipt.time"/>
+        </p>
+            <table width="100%">
+            <thead>
+                <tr>
+                    <th align="left">S.No</th>
+                    <th align="left">Item</th>
+                    <th align="right">Qty</th>
+                </tr>
+            </thead>
+                <tbody>
+    <t t-foreach="receipt.lines" t-as="line" t-key="line.product_name">
+        <tr>
+            <td>
+                <t t-esc="line_index + 1"/>
+            </td>
+
+
+            <td>
+                <t t-esc="line.full_product_name"/>
+                <t t-if="line.note">
+                    <br/>
+                    <small>(<t t-esc="line.note"/>)</small>
+                </t>
+            </td>
+            <td align="right">
+                <t t-esc="line.qty"/>
+            </td>
+        </tr>
+    </t>
+</tbody>
+        </table>
+
+            <hr/>
+            <p style="text-align:center;">--- Kitchen Copy ---</p>
+    </div>
+    </t>
+
+</templates>

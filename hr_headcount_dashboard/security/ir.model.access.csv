@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_zone_user,hr.zone.user,model_hr_zone,base.group_user,1,0,0,0
+access_hr_zone_hr_manager,hr.zone.hr_manager,model_hr_zone,hr.group_hr_manager,1,1,1,1
+access_hr_branch_user,hr.branch.user,model_hr_branch,base.group_user,1,0,0,0
+access_hr_branch_hr_manager,hr.branch.hr_manager,model_hr_branch,hr.group_hr_manager,1,1,1,1
+access_hr_division_user,hr.division.user,model_hr_division,base.group_user,1,0,0,0
+access_hr_division_hr_manager,hr.division.hr_manager,model_hr_division,hr.group_hr_manager,1,1,1,1
+access_hr_sub_department_user,hr.sub.department.user,model_hr_sub_department,base.group_user,1,0,0,0
+access_hr_sub_department_hr_manager,hr.sub.department.hr_manager,model_hr_sub_department,hr.group_hr_manager,1,1,1,1
+access_hr_management_level_user,hr.management.level.user,model_hr_management_level,base.group_user,1,0,0,0
+access_hr_management_level_hr_manager,hr.management.level.hr_manager,model_hr_management_level,hr.group_hr_manager,1,1,1,1
+access_hr_grade_user,hr.grade.user,model_hr_grade,base.group_user,1,0,0,0
+access_hr_grade_hr_manager,hr.grade.hr_manager,model_hr_grade,hr.group_hr_manager,1,1,1,1

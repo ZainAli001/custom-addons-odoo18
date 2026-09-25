@@ -1,0 +1,56 @@
+<t t-name="bop_charts.Dashboard">
+    <div class="o_crm_dashboard" style="height: 100%; overflow-y: auto; padding: 20px; background-color: #f9f9f9;">
+        <h2 class="mb-4">CRM Performance Dashboard</h2>
+
+        <!-- Row 1: Pie Chart & Bar Chart -->
+        <div class="row">
+            <!-- Chart 1: Won vs Lost (Pie) -->
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Won vs Lost Analysis</h5>
+                    </div>
+                    <div class="card-body" style="height: 300px; position: relative;">
+                        <canvas t-ref="chart_won_lost"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart 2: Leads by Stage (Bar) -->
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Leads by Stage</h5>
+                    </div>
+                    <div class="card-body" style="height: 300px; position: relative;">
+                        <canvas t-ref="chart_stage"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2: Monthly Trend (Line) -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Monthly Leads Trend</h5>
+                    </div>
+                    <div class="card-body" style="height: 350px; position: relative;">
+                        <canvas t-ref="chart_trend"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</t>
+
+
+<!--<t t-name="bop_charts.Dashboard">-->
+<!--    <div class="o_crm_dashboard" style="padding: 20px; height: 100%; overflow: auto;">-->
+<!--        <h1>CRM Won vs Lost Analysis</h1>-->
+<!--        <div class="chart-container" style="position: relative; height: 400px; width: 400px;">-->
+<!--            <canvas t-ref="chart"/>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</t>-->

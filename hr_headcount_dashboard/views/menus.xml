@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Top-level menu under the HR app, matching the screenshot's left nav -->
+    <menuitem id="menu_hr_headcount_dashboard_root"
+              name="Headcount Management"
+              parent="hr.menu_hr_root"
+              action="action_hr_headcount_dashboard"
+              sequence="12"/>
+
+    <!-- Configuration menus for the new org master data, under HR > Configuration -->
+    <menuitem id="menu_hr_headcount_config_root"
+              name="Headcount Setup"
+              parent="hr.menu_human_resources_configuration"
+              sequence="100"/>
+
+    <menuitem id="menu_hr_zone" name="Zones"
+              parent="menu_hr_headcount_config_root"
+              action="action_hr_zone" sequence="10"/>
+
+    <menuitem id="menu_hr_branch" name="Branches"
+              parent="menu_hr_headcount_config_root"
+              action="action_hr_branch" sequence="20"/>
+
+    <menuitem id="menu_hr_division" name="Divisions"
+              parent="menu_hr_headcount_config_root"
+              action="action_hr_division" sequence="30"/>
+
+    <menuitem id="menu_hr_sub_department" name="Sub-Departments"
+              parent="menu_hr_headcount_config_root"
+              action="action_hr_sub_department" sequence="40"/>
+
+    <menuitem id="menu_hr_management_level" name="Management Levels"
+              parent="menu_hr_headcount_config_root"
+              action="action_hr_management_level" sequence="50"/>
+
+    <menuitem id="menu_hr_grade" name="HR Grades"
+              parent="menu_hr_headcount_config_root"
+              action="action_hr_grade" sequence="60"/>
+
+</odoo>

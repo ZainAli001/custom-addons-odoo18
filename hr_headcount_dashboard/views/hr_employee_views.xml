@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_employee_form_headcount_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.form.headcount.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="sub_department_id"/>
+                <field name="division_id"/>
+                <field name="branch_id"/>
+                <field name="zone_id" readonly="1"/>
+                <field name="region_id" readonly="1"/>
+            </xpath>
+            <xpath expr="//field[@name='job_id']" position="after">
+                <field name="management_level_id"/>
+                <field name="hr_grade_id"/>
+                <field name="employment_type"/>
+                <field name="employee_status"/>
+                <field name="joining_date"/>
+                <field name="exit_date"/>
+            </xpath>
+            <xpath expr="//field[@name='job_title']" position="before">
+                <field name="employee_code" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_employee_tree_headcount_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.tree.headcount.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='department_id']" position="before">
+                <field name="employee_code" optional="show"/>
+            </xpath>
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="branch_id" optional="hide"/>
+                <field name="employee_status" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_employee_filter_headcount_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.search.headcount.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='group_department']" position="after">
+                <filter string="Branch" name="group_branch" context="{'group_by': 'branch_id'}"/>
+                <filter string="Zone" name="group_zone" context="{'group_by': 'zone_id'}"/>
+                <filter string="Employee Status" name="group_status" context="{'group_by': 'employee_status'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

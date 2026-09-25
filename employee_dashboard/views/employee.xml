@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="action_employee_list"
+            model="ir.actions.client">
+
+        <field name="name">Employees</field>
+
+        <field name="tag">
+            employee_dashboard.employee_list
+        </field>
+
+    </record>
+</odoo>

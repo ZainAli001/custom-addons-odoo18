@@ -1,0 +1,15 @@
+.o_headcount_dashboard {
+    .kpi-card .card {
+        min-height: 80px;
+    }
+    .chart-box {
+        position: relative;
+        height: 220px;
+    }
+    .o_hd_filters .form-label {
+        color: #6b7280;
+    }
+    table.table-sm td, table.table-sm th {
+        vertical-align: middle;
+    }
+}
